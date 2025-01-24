@@ -1,0 +1,27 @@
+[
+    {
+        "p_rel_url" : "mohitsubramaniam15/Azure-Olympics/refs/heads/main/data/Athletes.csv",
+        "p_sink_folder" : "Athletes",
+        "p_sink_file" : "Athletes.csv"
+    },
+    {
+        "p_rel_url" : "mohitsubramaniam15/Azure-Olympics/refs/heads/main/data/Coaches.csv",
+        "p_sink_folder" : "Coaches",
+        "p_sink_file" : "Coaches.csv"
+    },
+    {
+        "p_rel_url" : "mohitsubramaniam15/Azure-Olympics/refs/heads/main/data/EntriesGender.csv",
+        "p_sink_folder" : "EntriesGender",
+        "p_sink_file" : "EntriesGender.csv"
+    },
+    {
+        "p_rel_url" : "mohitsubramaniam15/Azure-Olympics/refs/heads/main/data/Medals.csv",
+        "p_sink_folder" : "Medals",
+        "p_sink_file" : "Medals.csv"
+    },
+    {
+        "p_rel_url" : "mohitsubramaniam15/Azure-Olympics/refs/heads/main/data/Teams.csv",
+        "p_sink_folder" : "Teams",
+        "p_sink_file" : "Teams.csv"
+    }
+]
