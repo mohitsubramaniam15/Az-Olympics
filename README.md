@@ -1,36 +1,48 @@
-# Azure-Olympics
+# 🏅 Olympics Data Pipeline Using Azure & Delta Lake
+
 ## 📌 Overview
 
-This project implements an end-to-end data pipeline using Azure services and Delta Lake for analyzing Olympics data. The data processing follows the Medallion architecture (Bronze, Silver, and Gold layers) to ensure data integrity, version control, and efficient transformations. The final insights are visualized in Power BI with advanced DAX measures.
+This project implements an end-to-end data pipeline using **Azure services** and **Delta Lake** for analyzing **Olympics data**. The data processing follows the **Medallion architecture** (Bronze, Silver, and Gold layers) to ensure:  
+✅ **Data integrity**  
+✅ **Version control**  
+✅ **Efficient transformations**  
+
+The final insights are visualized in **Power BI** with **advanced DAX measures** for dynamic data exploration.  
 
 ---
 
 ## 🏆 Problem Statement
 
-Analyzing Olympics data requires a structured pipeline that ensures accuracy, version control, and scalable processing. The goal of this project is to:
+Analyzing Olympics data requires a structured pipeline that ensures:  
+- **Accuracy** – Handling missing values, duplicates, and incorrect data types.  
+- **Version Control** – Maintaining historical data with Delta Lake.  
+- **Scalable Processing** – Using **Azure Data Factory, Databricks & PySpark** for big data transformations.  
 
-- Efficiently ingest and clean raw Olympics data.
-- Process and transform the data for insightful analysis.
-- Generate key performance metrics using DAX.
-- Visualize trends such as country-wise medal distribution and gender-based participation.
+### **Objectives**
+✅ Efficiently ingest & clean raw Olympics data.  
+✅ Process and transform data for insightful analysis.  
+✅ Generate key performance metrics using DAX in Power BI.  
+✅ Visualize trends such as country-wise medal distribution and gender-based participation.  
 
 ---
 
 ## 📊 Analysis & Key Insights
 
-- **Medal Distribution**: The United States won the most gold medals, followed closely by China and Japan.
-- **Gender Participation**: Athletics had the highest gender-balanced participation, while artistic swimming was dominated by female athletes.
-- **Top Performing Countries**: Countries like the U.S., China, and Great Britain consistently lead in total medal counts.
-- **Trend Analysis**: Power BI dashboards allow dynamic exploration of trends across disciplines and years.
+- **Medal Distribution**: The **United States** won the most **gold medals**, followed closely by **China** and **Japan**.  
+- **Gender Participation**: **Athletics** had the highest **gender-balanced** participation, while **artistic swimming** was dominated by **female athletes**.  
+- **Top Performing Countries**: Countries like **U.S., China, and Great Britain** consistently lead in **total medal counts**.  
+- **Trend Analysis**: Power BI dashboards allow **dynamic exploration** of trends across **disciplines and years**.  
 
 ---
 
 ## 🚀 Tech Stack
 
-- **Cloud Services**: Azure Data Factory, Azure Data Lake, Databricks
-- **Processing**: PySpark, SQL, Delta Lake
-- **Visualization**: Power BI, DAX
-- **Data Formats**: CSV, Parquet, JSON
+| Category         | Tools & Technologies |
+|-----------------|---------------------|
+| **Cloud Services** | Azure Data Factory, Azure Data Lake, Databricks |
+| **Processing** | PySpark, SQL, Delta Lake |
+| **Visualization** | Power BI, DAX |
+| **Data Formats** | CSV, Parquet, JSON |
 
 ---
 
@@ -38,16 +50,16 @@ Analyzing Olympics data requires a structured pipeline that ensures accuracy, ve
 
 ### **Medallion Architecture Implementation**
 
-#### **Bronze Layer (Raw Data):**
+#### **Bronze Layer (Raw Data)**
 - Data ingestion from Azure Data Lake (CSV format).
 - Storage in a raw zone without modifications.
 
-#### **Silver Layer (Cleansed Data):**
+#### **Silver Layer (Cleansed Data)**
 - Data transformation using PySpark.
 - Casting data types, handling missing values, and schema enforcement.
 - Stored in Parquet format.
 
-#### **Gold Layer (Analytical Data):**
+#### **Gold Layer (Analytical Data)**
 - Aggregation and business logic implementation.
 - Optimized data for Power BI visualization.
 
