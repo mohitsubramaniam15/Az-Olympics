@@ -52,6 +52,8 @@ Analyzing Olympics data requires a structured pipeline that ensures:
 
 ## 🏗️ Architecture
 
+<img src="assets/arch.png" alt="Architecture">
+
 ### **Medallion Architecture Implementation**
 
 #### **Bronze Layer (Raw Data)**
