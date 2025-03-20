@@ -27,7 +27,9 @@ Analyzing Olympics data requires a structured pipeline that ensures:
 ---
 
 ## 📊 Analysis & Key Insights
+
 <img src="assets/bi.png" alt="Power BI Dashboard">
+
 - **Medal Distribution**: The **United States** won the most **gold medals**, followed closely by **China** and **Japan**.  
 - **Gender Participation**: **Athletics** had the highest **gender-balanced** participation, while **artistic swimming** was dominated by **female athletes**.  
 - **Top Performing Countries**: Countries like **U.S., China, and Great Britain** consistently lead in **total medal counts**.  
