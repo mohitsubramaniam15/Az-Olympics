@@ -24,6 +24,8 @@ Analyzing Olympics data requires a structured pipeline that ensures:
 ✅ Generate key performance metrics using DAX in Power BI.  
 ✅ Visualize trends such as country-wise medal distribution and gender-based participation.  
 
+<img src="assets/image(3).png" alt="Azure Resource Group">
+
 ---
 
 ## 📊 Analysis & Key Insights
