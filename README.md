@@ -10,6 +10,11 @@ This project implements an end-to-end data pipeline using **Azure services** and
 The final insights are visualized in **Power BI** with **advanced DAX measures** for dynamic data exploration.  
 
 ---
+## 📸 Power BI Dashboard Screenshot
+
+![Streaming Power BI Dashboard](https://github.com/mohitsubramaniam15/mohitsubramaniam15/blob/main/bi_screenshots/olympics.png)
+
+---
 
 ## 🏆 Problem Statement
 
