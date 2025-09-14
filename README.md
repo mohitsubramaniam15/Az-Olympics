@@ -1,15 +1,18 @@
 # 🏅 Azure Olympics Trend & Comparative Analysis
 
 ---
-
 ## 📌 Navigation  
+<div align="center">
 
 | Section | Link |
 |---------|------|
 | **Part 1 – Data Analysis** | [Go to Data Analysis](#-part-1-data-analysis--exploratory--diagnostic-insights) |
+| **Notebook Breakdown** | [Go to Notebook Breakdown](#-notebook-breakdown-eda_olympicsipynb) |
 | **Interactive Dashboard** | [View Dashboard](#-power-bi-dashboard) |
 | **Part 2 – Data Engineering & Pipeline** | [Go to Data Engineering](#-part-2-data-engineering--azure-pipeline-with-delta-lake) |
 
+
+</div>
 ---
 
 ## 🔹 Part 1: Data Analysis – Exploratory & Diagnostic Insights  
@@ -40,8 +43,9 @@ This narrative also aligns with the [LinkedIn Post (Slides)](https://www.linkedi
 
 ---
 
-### 🧪 Notebook Breakdown (eda_olympics.py)  
-
+### 🧪 Notebook Breakdown (EDA_olympics.ipynb)  
+You can explore the full Colab notebook here:  
+[Open in Google Colab](https://colab.research.google.com/drive/14cRdWDK4jQyiqFV2x06cWTC3iKc1pixK?usp=sharing)
 #### 1. Data Import & Cleaning  
 - Imported `dataset_olympics.csv`  
 - Used `data.info()` and `describe()` to inspect schema  
