@@ -1,139 +1,204 @@
-# 🏅 Olympics Data Pipeline Using Azure & Delta Lake
-
-## 📌 Overview
-
-This project implements an end-to-end data pipeline using **Azure services** and **Delta Lake** for analyzing **Olympics data**. The data processing follows the **Medallion architecture** (Bronze, Silver, and Gold layers) to ensure:  
-✅ **Data integrity**  
-✅ **Version control**  
-✅ **Efficient transformations**  
-
-The final insights are visualized in **Power BI** with **advanced DAX measures** for dynamic data exploration.  
-
----
-## 📸 Power BI Dashboard Screenshot
-
-![Streaming Power BI Dashboard](https://github.com/mohitsubramaniam15/mohitsubramaniam15/blob/main/bi_screenshots/olympics.png)
+# 🏅 Azure Olympics Trend & Comparative Analysis
 
 ---
 
-## 🏆 Problem Statement
+## 📌 Navigation  
 
-Analyzing Olympics data requires a structured pipeline that ensures:  
-- **Accuracy** – Handling missing values, duplicates, and incorrect data types.  
-- **Version Control** – Maintaining historical data with Delta Lake.  
-- **Scalable Processing** – Using **Azure Data Factory, Databricks & PySpark** for big data transformations.  
-
-### **Objectives**
-✅ Efficiently ingest & clean raw Olympics data.  
-✅ Process and transform data for insightful analysis.  
-✅ Generate key performance metrics using DAX in Power BI.  
-✅ Visualize trends such as country-wise medal distribution and gender-based participation.  
-
-<img src="assets/image (3).png" alt="Azure Resource Group">
+| Section | Link |
+|---------|------|
+| **Part 1 – Data Analysis** | [Go to Data Analysis](#-part-1-data-analysis--exploratory--diagnostic-insights) |
+| **Interactive Dashboard** | [View Dashboard](#-power-bi-dashboard) |
+| **Part 2 – Data Engineering & Pipeline** | [Go to Data Engineering](#-part-2-data-engineering--azure-pipeline-with-delta-lake) |
 
 ---
 
-## 📊 Analysis & Key Insights
+## 🔹 Part 1: Data Analysis – Exploratory & Diagnostic Insights  
 
-<img src="assets/bi.png" alt="Power BI Dashboard">
+### 📌 Problem Statement  
+The Olympic Games bring together athletes from across the world, but understanding long-term **participation patterns**, **athlete demographics**, and **medal outcomes** requires more than raw numbers.  
 
-- **Medal Distribution**: The **United States** won the most **gold medals**, followed closely by **China** and **Japan**.  
-- **Gender Participation**: **Athletics** had the highest **gender-balanced** participation, while **artistic swimming** was dominated by **female athletes**.  
-- **Top Performing Countries**: Countries like **U.S., China, and Great Britain** consistently lead in **total medal counts**.  
-- **Trend Analysis**: Power BI dashboards allow **dynamic exploration** of trends across **disciplines and years**.  
+This analysis seeks to answer:  
+- How has athlete participation evolved across decades?  
+- What role do **age, height, and weight** play in performance?  
+- How have **gender dynamics** changed over time?  
+- Which countries and sports dominate the Olympic landscape?  
 
----
-
-## 🚀 Tech Stack
-
-| Category         | Tools & Technologies |
-|-----------------|---------------------|
-| **Cloud Services** | Azure Data Factory, Azure Data Lake, Databricks |
-| **Processing** | PySpark, SQL, Delta Lake |
-| **Visualization** | Power BI, DAX |
-| **Data Formats** | CSV, Parquet, JSON |
+The challenge lies in structuring the raw dataset into **insightful trends and comparisons** that reveal both historical and sporting narratives.  
 
 ---
 
-## 🏗️ Architecture
+### 📌 Overview  
+The **Gold Layer dataset (70K+ athlete records, 1896–2016)** was analyzed using **Colab (Python, Pandas, Seaborn, Matplotlib)** and visualized in **Power BI**.  
 
-<img src="assets/arch.png" alt="Architecture">
+The analysis followed a flow of:  
+1. **Cleaning & preprocessing**  
+2. **Exploratory Data Analysis (EDA)**  
+3. **Descriptive insights** (what happened)  
+4. **Diagnostic insights** (why it happened)  
 
-### **Medallion Architecture Implementation**
+This narrative also aligns with the [LinkedIn Post (Slides)](https://www.linkedin.com/feed/update/urn:li:activity:7372879294664036352/), which presented the results as a visual storytelling sequence.  
 
-#### **Bronze Layer (Raw Data)**
-- Data ingestion from Azure Data Lake (CSV format).
-- Storage in a raw zone without modifications.
+---
 
-#### **Silver Layer (Cleansed Data)**
-- Data transformation using PySpark.
-- Casting data types, handling missing values, and schema enforcement.
-- Stored in Parquet format.
+### 🧪 Notebook Breakdown (eda_olympics.py)  
 
-#### **Gold Layer (Analytical Data)**
-- Aggregation and business logic implementation.
-- Optimized data for Power BI visualization.
+#### 1. Data Import & Cleaning  
+- Imported `dataset_olympics.csv`  
+- Used `data.info()` and `describe()` to inspect schema  
+- Found missing values in **Height/Weight**, handled accordingly  
+- Removed duplicates with `drop_duplicates()`  
+
+👉 *Why*: Clean data ensures accuracy and avoids inflated participation counts.  
+
+#### 2. Univariate Analysis  
+- **Gender Distribution** → Early Olympics male-dominated; female athletes steadily increased post-1920.  
+- **Age Distribution** → Most athletes aged 20–30; peak around 24–26 years.  
+- **Height/Weight** → Spread highlighted physical diversity across sports.  
+- **Medal Counts** → Bronze > Silver > Gold due to dual bronze medals.  
+
+👉 *Why*: Establishes baseline athlete demographics.  
+
+#### 3. Bivariate Analysis  
+- **Year vs Medal** → Medal counts rose as events expanded.  
+- **Height vs Weight by Medal** → Showed natural athlete clusters (light gymnasts vs heavy wrestlers).  
+- **Season vs Age** → Summer athletes younger; Winter athletes older.  
+- **Medal vs Height** → Violin plots revealed medalist body profiles.  
+
+👉 *Why*: Connects physical attributes with success.  
+
+#### 4. Group-Level Analysis  
+- **Average Age by Year** → Rising trend across decades.  
+- **Median Height by Sport** → Basketball/Volleyball tallest, Gymnastics shortest.  
+- **Medals by Country** → USA, USSR/Russia, and China consistently at the top.  
+- **Country Avg Age** → China fields younger gymnasts; Europe older endurance athletes.  
+
+👉 *Why*: Links countries’ strategies with athlete profiles.  
+
+#### 5. Sport-Level Trends  
+- **Unique Events** → Athletics & Swimming had the most.  
+- **Wrestling Gender Gaps** → Female wrestlers significantly lighter.  
+- **Participation Growth** → Exponential increase after WWII and Cold War.  
+
+👉 *Why*: Reflects how Olympic expansion shaped opportunities.  
+
+#### 6. Highlights (Extreme Values)  
+- **Tallest Athlete** → Over 2.2m tall, basketball player.  
+- **Heaviest Athlete** → Over 200kg, weightlifting.  
+
+👉 *Why*: Outliers illustrate diversity in athlete builds.  
+
+#### 7. Medals Heatmap  
+- Pivot table → medals by **Country × Year**  
+- Heatmap showed:  
+  - USA dominance post-WWII  
+  - China’s rise post-1980s  
+  - USSR/Russia dominance until 1990s  
+
+👉 *Why*: Visualizes geopolitical shifts in sports.  
+
+---
+
+### 📈 Descriptive & Diagnostic Insights  
+
+- **Descriptive**  
+  - Participation surged across decades  
+  - Gender gap closed significantly post-1970s  
+  - USA, USSR, China dominated overall medal counts  
+
+- **Diagnostic**  
+  - **Why USA dominates** → Broad participation across disciplines  
+  - **Why gymnastics skews younger** → Flexibility peak at younger ages  
+  - **Why gender gap shrank** → IOC reforms & women’s events inclusion  
+
+---
+
+### 📸 Power BI Dashboard  
+
+![Power BI Dashboard](assets/bi.png)  
+
+The dashboard enabled dynamic exploration of:  
+- **Medal distribution by country**  
+- **Gender participation evolution**  
+- **Sport-level demographics**  
+- **Comparative trends across decades**  
+
+---
+
+## 🔹 Part 2: Data Engineering – Azure Pipeline with Delta Lake  
+
+### 📌 Problem Statement  
+Raw Olympic datasets are **large, inconsistent, and evolving**. Building reliable analytics requires a pipeline that:  
+- Handles missing values & schema drift  
+- Maintains historical versions of data  
+- Supports scalable transformations for big data  
+- Prepares clean datasets for visualization and ML  
+
+---
+
+### 📌 Overview  
+The pipeline was built with **Azure Data Factory, Databricks, and Delta Lake**, following the **Medallion Architecture (Bronze → Silver → Gold)**.  
+
+This ensures:  
+- **Data integrity** (clean, deduplicated, standardized)  
+- **Version control** (Delta Lake time travel)  
+- **Optimized queries** for analytics  
+
+---
+
+### 🏗️ Architecture  
+
+![Architecture](assets/arch.png)  
+
+- **Bronze Layer (Raw Data)**  
+  - Ingested Kaggle CSVs into Azure Data Lake  
+
+- **Silver Layer (Cleansed Data)**  
+  - Used PySpark in Databricks  
+  - Schema enforcement, null handling, deduplication  
+  - Stored as Parquet  
+
+- **Gold Layer (Business Data)**  
+  - Aggregated & enriched data  
+  - Written to Delta Tables for Power BI  
+
+---
+
+### 💾 Sample PySpark Transformation  
 
 ```python
 # Writing data to Delta Lake in Gold Layer
-
 df_ath.write.format('delta').mode('append').option('path', f'{gold}/Delta/Athletes').saveAsTable('Athlete')
-df_Coaches.write.format('delta').mode('append').option('path', f'{gold}/Delta/Coaches').saveAsTable('Coaches')
-df_EntriesGender.write.format('delta').mode('append').option('path', f'{gold}/Delta/EntriesGender').saveAsTable('EntriesGender')
 df_Medals_1.write.format('delta').mode('append').option('path', f'{gold}/Delta/Medals').saveAsTable('Medals')
-df_Teams.write.format('delta').mode('append').option('path', f'{gold}/Delta/Teams').saveAsTable('Teams')
 ```
 
 ---
 
-## 🛠️ Delta Lake: Time Travel, Versioning & ACID Transactions
+### ⚡ Delta Lake Features  
 
-### **Time Travel in Delta Lake**
-Delta Lake enables time travel, allowing users to query previous versions of data.
-
+- **Time Travel & Versioning**  
 ```sql
--- View the history of a table
 DESCRIBE HISTORY Medals;
 ```
 
-```python
-# Querying a previous version using PySpark
-previous_version = spark.read.format("delta").option("versionAsOf", 2).load(f"{gold}/Delta/Medals")
-previous_version.show()
-```
-
-### **Versioning in Delta Lake**
-Every change to a Delta table is stored as a new version, maintaining data lineage and reproducibility.
-
-```python
-# Get the latest version number
-latest_version = spark.sql("SELECT max(version) FROM (DESCRIBE HISTORY Medals)")
-print(f"Latest Version: {latest_version}")
-```
-
-### **ACID Transactions & Schema Evolution**
-Delta Lake ensures **ACID compliance** (Atomicity, Consistency, Isolation, Durability) and supports schema evolution.
-
+- **ACID Transactions & Schema Evolution**  
 ```sql
--- Enforce schema constraints and enable column mapping
 ALTER TABLE Athlete
 SET TBLPROPERTIES (
-    'delta.minReaderVersion' = '2',
-    'delta.minWriterVersion' = '5',
-    'delta.columnMapping.mode' = 'name'
+  'delta.minReaderVersion' = '2',
+  'delta.minWriterVersion' = '5',
+  'delta.columnMapping.mode' = 'name'
 );
 ```
 
----
-
-## 📊 Power BI Dashboard
-
-- **Total Medals**: `SUM(Medals[Total])`
-- **Gold Medals**: `SUM(Medals[Gold])`
-- **Silver Medals**: `SUM(Medals[Silver])`
-- **Bronze Medals**: `SUM(Medals[Bronze])`
-- **Total Athletes**: `CALCULATE(DISTINCTCOUNT('Athletes'[Name]))`
+👉 *Why*: Ensures reproducibility and reliable concurrent updates.  
 
 ---
 
-This structured approach ensures efficient processing, data integrity, and insightful analysis of Olympics data. 🚀
+## ✅ Conclusion  
+
+This project demonstrates a **two-part approach**:  
+
+- **Part 1 – Data Analysis**: In-depth EDA and diagnostic analysis (Python + Power BI) revealing patterns in participation, demographics, gender evolution, and medal dominance.  
+- **Part 2 – Data Engineering**: Scalable Azure + Delta Lake pipeline ensuring clean, versioned, and business-ready datasets.  
+
+Together, they form a **full-stack data project** — from ingestion to insights 🚀  
