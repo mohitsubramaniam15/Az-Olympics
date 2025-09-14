@@ -1,6 +1,5 @@
 # 🏅 Azure Olympics Trend & Comparative Analysis
 
----
 ## 📌 Navigation  
 <div align="center">
 
@@ -13,8 +12,8 @@
 
 
 </div>
----
 
+---
 ## 🔹 Part 1: Data Analysis – Exploratory & Diagnostic Insights  
 
 ### 📌 Problem Statement  
